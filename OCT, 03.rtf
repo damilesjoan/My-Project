@@ -1,0 +1,380 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Oblique;
+}
+{\colortbl;\red255\green255\blue255;\red191\green100\blue38;\red32\green32\blue32;\red88\green118\blue71;
+\red254\green187\blue91;\red153\green168\blue186;\red109\green109\blue109;\red173\green169\blue32;\red86\green132\blue173;
+\red133\green96\blue154;\red152\green182\blue28;}
+{\*\expandedcolortbl;;\csgenericrgb\c74902\c39216\c14902;\csgenericrgb\c12549\c12549\c12549;\csgenericrgb\c34510\c46275\c27843;
+\csgenericrgb\c99608\c73333\c35686;\csgenericrgb\c60000\c65882\c72941;\csgenericrgb\c42745\c42745\c42745;\csgenericrgb\c67843\c66275\c12549;\csgenericrgb\c33725\c51765\c67843;
+\csgenericrgb\c52157\c37647\c60392;\csgenericrgb\c59608\c71373\c10980;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 *MAIN DART\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs26 \cf2 \cb3 import \cf4 'package:example_todo/screens/home.dart'\cf2 ;\
+import \cf4 'package:flutter/material.dart'\cf2 ;\
+\
+void \cf5 main\cf6 () \{\
+  runApp(\cf2 const \cf5 MyApp\cf6 ())\cf2 ;\
+\cf6 \}\
+\
+\cf2 class \cf6 MyApp \cf2 extends \cf6 StatelessWidget \{\
+  \cf2 const \cf6 MyApp(\{\cf2 super\cf6 .key\})\cf2 ;\
+\
+  \cf7 // This widget is the root of your application.\
+  \cf8 @override\
+  \cf6 Widget \cf5 build\cf6 (BuildContext context) \{\
+    \cf2 return \cf5 MaterialApp\cf6 (\
+      debugShowCheckedModeBanner: \cf2 false,\
+      \cf6 title: \cf4 'ToDo App'\cf2 ,\
+      \cf6 home: \cf5 Home\cf6 ()\cf2 ,\
+    \cf6 )\cf2 ;\
+  \cf6 \}\
+\}\
+\
+*HOME DART\
+\
+import \cf4 '../constants/colors.dart'\cf2 ;\
+\cf6 import \cf4 '../models/todo.dart'\cf2 ;\
+\cf6 import \cf4 '../widgets/todo_item.dart'\cf2 ;\
+\cf6 import \cf4 'package:flutter/material.dart'\cf2 ;\
+\
+class \cf6 Home \cf2 extends \cf6 StatefulWidget \{\
+  \cf2 const \cf6 Home(\{Key? key\}) : \cf2 super\cf6 (key: key)\cf2 ;\
+\
+  \cf6 @override\
+  State<Home> createState() => _HomeState()\cf2 ;\
+\cf6 \}\
+\cf2 class \cf6 _HomeState \cf2 extends \cf6 State<Home> \{\
+\cf2 final \cf6 todoList = ToDo.todoList()\cf2 ;\
+\cf6 List<ToDo> _foundToDo = []\cf2 ;\
+final \cf6 _todoController = TextEditingController()\cf2 ;\
+\
+\cf6 @override\
+  \cf2 void \cf6 initState() \{\
+    _foundToDo = todoList\cf2 ;\
+    super\cf6 .initState()\cf2 ;\
+  \cf6 \}\
+\
+\
+  @override\
+  Widget build(BuildContext context) \{\
+    \cf2 return \cf6 Scaffold(\
+      backgroundColor: tdBGColor\cf2 ,\
+      \cf6 appBar: _buildAppBar()\cf2 ,\
+      \cf6 body: Stack(\
+        children: [\
+          Container(\
+            padding: EdgeInsets.symmetric(\
+                horizontal: \cf9 20\cf2 ,\
+                \cf6 vertical: \cf9 15\
+            \cf6 )\cf2 ,\
+            \cf6 child: Column(\
+                children: [\
+                searchBox()\cf2 ,\
+                \cf6 Expanded(\
+                  child: ListView(\
+                    children: [\
+                     Container(\
+                       margin: EdgeInsets.only(\
+                          top: \cf9 50\cf2 ,\
+                          \cf6 bottom: \cf9 20\
+                    \cf6 )\cf2 ,\
+                     \cf6 child: Text(\
+                       \cf4 'All ToDos'\cf2 ,\
+                       \cf6 style: TextStyle(\
+                         fontSize: \cf9 30\cf2 ,\
+                         \cf6 fontWeight: FontWeight.w500\
+                      )\cf2 ,\
+                   \cf6 )\cf2 ,\
+                \cf6 )\cf2 ,\
+\
+                    for \cf6 ( ToDo todo \cf2 in \cf6 _foundToDo.reversed)\
+                  ToDoItem(\
+                      todo: todo\cf2 ,\
+                    \cf6 onToDoChanged: _handleToDoChange\cf2 ,\
+                    \cf6 onDeleteItem: _deleteToDoItem\cf2 ,\
+                  \cf6 )\cf2 ,\
+              \cf6 ]\cf2 ,\
+             \cf6 )\cf2 ,\
+            \cf6 )\cf2 ,\
+           \cf6 ]\cf2 ,\
+          \cf6 )\cf2 ,\
+        \cf6 )\cf2 ,\
+          \cf6 Align(\
+            alignment: Alignment.bottomCenter\cf2 ,\
+            \cf6 child: Row(children: [\
+              Expanded(\
+                  child: Container(\
+                    margin: EdgeInsets.only(\
+                      bottom: \cf9 20\cf2 ,\
+                      \cf6 right: \cf9 20\cf2 ,\
+                      \cf6 left: \cf9 20\cf2 ,\
+                    \cf6 )\cf2 ,\
+                    \cf6 padding: EdgeInsets.symmetric(\
+                      horizontal: \cf9 20\cf2 ,\
+                      \cf6 vertical: \cf9 5\cf2 ,\
+                    \cf6 )\cf2 ,\
+                    \cf6 decoration: BoxDecoration(\
+                      color: Colors.white\cf2 ,\
+                      \cf6 boxShadow: \cf2 const \cf6 [BoxShadow(\
+                        color: Colors.grey\cf2 ,\
+                        \cf6 offset: Offset(\cf9 0.0\cf2 , \cf9 0.0\cf6 )\cf2 ,\
+                        \cf6 blurRadius: \cf9 10.0\cf2 ,\
+                        \cf6 spreadRadius: \cf9 0.0\cf2 ,\
+                      \cf6 )]\cf2 ,\
+                      \cf6 borderRadius: BorderRadius.circular(\cf9 10\cf6 )\cf2 ,\
+                    \cf6 )\cf2 ,\
+                    \cf6 child: TextField(\
+                      controller: _todoController\cf2 ,\
+                      \cf6 decoration: InputDecoration(\
+                        hintText: \cf4 'add a new todo item'\cf2 ,\
+                        \cf6 border: InputBorder.none\
+                      )\cf2 ,\
+                    \cf6 )\cf2 ,\
+                  \cf6 )\cf2 ,\
+              \cf6 )\cf2 ,\
+              \cf6 Container(\
+                margin: EdgeInsets.only(\
+                  bottom: \cf9 20\cf2 ,\
+                  \cf6 right: \cf9 20\cf2 ,\
+                \cf6 )\cf2 ,\
+                \cf6 child: ElevatedButton(\
+                  child: Text(\cf4 '+'\cf2 ,\
+                      \cf6 style: TextStyle(\
+                          fontSize: \cf9 40\
+                      \cf6 )\cf2 ,\
+                  \cf6 )\cf2 ,\
+                  \cf6 onPressed: () \{\
+                    _addToDoItem(_todoController.text)\cf2 ;\
+                  \cf6 \}\cf2 ,\
+                  \cf6 style: ElevatedButton.styleFrom(\
+                    primary: tdBlue\cf2 ,\
+                    \cf6 minimumSize: Size(\cf9 60\cf2 , \cf9 60\cf6 )\cf2 ,\
+                    \cf6 elevation: \cf9 10\cf2 ,\
+                  \cf6 )\cf2 ,\
+                \cf6 )\cf2 ,\
+              \cf6 )\cf2 ,\
+            \cf6 ])\cf2 ,\
+          \cf6 )\cf2 ,\
+       \cf6 ]\cf2 ,\
+      \cf6 )\cf2 ,\
+    \cf6 )\cf2 ;\
+  \cf6 \}\
+\
+  \cf2 void \cf6 _handleToDoChange(ToDo todo)\{\
+    setState(() \{\
+      todo.isDone = !todo.isDone\cf2 ;\
+    \cf6 \})\cf2 ;\
+  \cf6 \}\
+\
+  \cf2 void \cf6 _deleteToDoItem(String id)\{\
+    setState(() \{\
+      todoList.removeWhere((item) => item.id == id)\cf2 ;\
+    \cf6 \})\cf2 ;\
+  \cf6 \}\
+\
+  \cf2 void \cf6 _addToDoItem(String toDo)\{\
+    setState(() \{\
+    todoList.add(ToDo(id: DateTime.now().microsecondsSinceEpoch.toString()\cf2 ,\
+    \cf6 todoText: toDo\cf2 ,\
+    \cf6 ))\cf2 ;\
+  \cf6 \})\cf2 ;\
+    \cf6 _todoController.clear()\cf2 ;\
+  \cf6 \}\
+\
+  \cf2 void \cf6 _runFilter(String enteredKeyword)\{\
+  List<ToDo> results = []\cf2 ;\
+  if\cf6 ( enteredKeyword.isEmpty) \{\
+    results = todoList\cf2 ;\
+  \cf6 \} \cf2 else \cf6 \{\
+    results = todoList\
+        .where((item) => item.todoText!\
+        .toLowerCase()\
+        .contains(enteredKeyword.toLowerCase()))\
+        .toList()\cf2 ;\
+  \cf6 \}\
+\
+  setState(() \{\
+    _foundToDo = results\cf2 ;\
+  \cf6 \})\cf2 ;\
+  \cf6 \}\
+\
+  Widget searchBox()\{\
+    \cf2 return \cf6 Container(\
+      padding: EdgeInsets.symmetric(horizontal: \cf9 15\cf6 )\cf2 ,\
+      \cf6 decoration: BoxDecoration(\
+        color: Colors.white\cf2 ,\
+        \cf6 borderRadius: BorderRadius.circular(\cf9 20\cf6 )\cf2 ,\
+      \cf6 )\cf2 ,\
+      \cf6 child: TextField(\
+        onChanged: (value) => _runFilter(value)\cf2 ,\
+        \cf6 decoration: InputDecoration(\
+          contentPadding: EdgeInsets.all(\cf9 0\cf6 )\cf2 ,\
+          \cf6 prefixIcon: Icon(\
+            Icons.search\cf2 ,\
+            \cf6 color: tdBlack\cf2 ,\
+            \cf6 size: \cf9 20\cf2 ,\
+          \cf6 )\cf2 ,\
+          \cf6 prefixIconConstraints: BoxConstraints(\
+              maxHeight: \cf9 20\cf2 ,\
+              \cf6 minWidth: \cf9 25\
+          \cf6 )\cf2 ,\
+          \cf6 border: InputBorder.none\cf2 ,\
+          \cf6 hintText: \cf4 'Search'\cf2 ,\
+          \cf6 hintStyle: TextStyle(color: tdGrey)\cf2 ,\
+        \cf6 )\cf2 ,\
+      \cf6 )\cf2 ,\
+    \cf6 )\cf2 ;\
+  \cf6 \}\
+\
+  AppBar _buildAppBar() \{\
+    \cf2 return \cf6 AppBar(\
+      backgroundColor: tdBGColor\cf2 ,\
+      \cf6 elevation: \cf9 0\cf2 ,\
+      \cf6 title: Row(\
+        mainAxisAlignment: MainAxisAlignment.spaceBetween\cf2 ,\
+          \cf6 children: [\
+        Icon(Icons.menu\cf2 ,\
+          \cf6 color: tdBlack\cf2 ,\
+          \cf6 size: \cf9 30\cf2 ,\
+        \cf6 )\cf2 ,\
+        \cf6 Container(\
+          height: \cf9 40\cf2 ,\
+          \cf6 width: \cf9 40\cf2 ,\
+          \cf6 child: ClipRRect(\
+            borderRadius: BorderRadius.circular(\cf9 20\cf6 )\cf2 ,\
+              \cf6 child: Image.asset(\cf4 'asssets/images/avatar.png'\cf6 )\cf2 ,\
+        \cf6 )\cf2 ,\
+        \cf6 )\cf2 ,\
+      \cf6 ])\cf2 ,\
+    \cf6 )\cf2 ;\
+  \cf6 \}\
+\}\
+\
+\
+*TODO DART\
+\
+\cf2 class \cf6 ToDo\{\
+  String? id\cf2 ;\
+  \cf6 String? todoText\cf2 ;\
+  \cf6 bool isDone\cf2 ;\
+\
+  \cf6 ToDo(\{\
+    required \cf2 this\cf6 .id\cf2 ,\
+    \cf6 required \cf2 this\cf6 .todoText\cf2 ,\
+    this\cf6 .isDone = \cf2 false\
+ \cf6 \})\cf2 ;\
+\
+  \cf6 static List<ToDo> todoList()\{\
+    \cf2 return\cf6 [\
+      ToDo(id: \cf4 '01'\cf2 , \cf6 todoText: \cf4 'Cleaning room'\cf2 , \cf6 isDone: \cf2 true\cf6 )\cf2 ,\
+      \cf6 ToDo(id: \cf4 '02'\cf2 , \cf6 todoText: \cf4 'Preparing Breakfast'\cf2 , \cf6 isDone: \cf2 true\cf6 )\cf2 ,\
+      \cf6 ToDo(id: \cf4 '03'\cf2 , \cf6 todoText: \cf4 'Check Message'\cf6 )\cf2 ,\
+      \cf6 ToDo(id: \cf4 '04'\cf2 , \cf6 todoText: \cf4 'Buy Groceries'\cf6 )\cf2 ,\
+      \cf6 ToDo(id: \cf4 '05'\cf2 , \cf6 todoText: \cf4 'Dinner with Friends'\cf6 )\cf2 ,\
+      \cf6 ToDo(id: \cf4 '06'\cf2 , \cf6 todoText: \cf4 'Doing Household Chores'\cf6 )\cf2 ,\
+    \cf6 ]\cf2 ;\
+  \cf6 \}\
+\}\
+\
+\
+*TODO ITEM DART\
+\
+\cf2 import \cf4 'package:example_todo/constants/colors.dart'\cf2 ;\
+import \cf4 'package:flutter/material.dart'\cf2 ;\
+\
+import \cf4 '../models/todo.dart'\cf2 ;\
+\
+class \cf6 ToDoItem \cf2 extends \cf6 StatelessWidget \{\
+  \cf2 final \cf6 ToDo \cf10 todo\cf2 ;\
+  final \cf10 onToDoChanged\cf2 ;\
+  final \cf10 onDeleteItem\cf2 ;\
+\
+  const \cf6 ToDoItem(\{\
+    Key? key\cf2 ,\
+    required this\cf6 .\cf10 todo\cf2 ,\
+    required this\cf6 .\cf10 onToDoChanged\cf2 ,\
+    required this\cf6 .\cf10 onDeleteItem\cf2 ,\
+  \cf6 \}) : \cf2 super\cf6 (key: key)\cf2 ;\
+\
+  \cf8 @override\
+  \cf6 Widget \cf5 build\cf6 (BuildContext context) \{\
+    \cf2 return \cf5 Container\cf6 (\
+      margin: \cf5 EdgeInsets\cf6 .\cf5 only\cf6 (bottom: \cf9 20\cf6 )\cf2 ,\
+        \cf6 child: \cf5 ListTile\cf6 (\
+          onTap: () \{\
+            \cf7 //print('Click on 
+\f2\i \cf11 Todo Item.');\
+            
+\f1\i0 \cf10 onToDoChanged\cf6 (\cf10 todo\cf6 )\cf2 ;\
+          \cf6 \}\cf2 ,\
+          \cf6 shape: \cf5 RoundedRectangleBorder\cf6 (\
+              borderRadius: \cf5 BorderRadius\cf6 .\cf5 circular\cf6 (\cf9 20\cf6 )\
+          )\cf2 ,\
+          \cf6 contentPadding: \cf5 EdgeInsets\cf6 .\cf5 symmetric\cf6 (horizontal: \cf9 20\cf2 , \cf6 vertical: \cf9 5\cf6 )\cf2 ,\
+          \cf6 tileColor: Colors.
+\f2\i \cf10 white
+\f1\i0 \cf2 ,\
+          \cf6 leading: \cf5 Icon\cf6 (\
+              \cf10 todo\cf6 .\cf10 isDone\cf6 ? Icons.
+\f2\i \cf10 check_box
+\f1\i0 \cf6 : Icons.
+\f2\i \cf10 check_box_outline_blank
+\f1\i0 \cf2 ,\
+              \cf6 color: tdBlue\
+          )\cf2 ,\
+          \cf6 title: \cf5 Text\cf6 (\
+             \cf10 todo\cf6 .\cf10 todoText\cf6 !\cf2 ,\
+              \cf6 style: \cf5 TextStyle\cf6 (\
+                  fontSize: \cf9 16\cf2 ,\
+                  \cf6 color: tdBlack\cf2 ,\
+                  \cf6 decoration: \cf10 todo\cf6 .\cf10 isDone\cf6 ? TextDecoration.
+\f2\i \cf10 lineThrough 
+\f1\i0 \cf6 : \cf2 null,\
+              \cf6 )\cf2 ,\
+          \cf6 )\cf2 ,\
+          \cf6 trailing: \cf5 Container\cf6 (\
+            padding: \cf5 EdgeInsets\cf6 .\cf5 all\cf6 (\cf9 0\cf6 )\cf2 ,\
+            \cf6 margin: \cf5 EdgeInsets\cf6 .\cf5 symmetric\cf6 (vertical: \cf9 12\cf6 )\cf2 ,\
+            \cf6 height: \cf9 35\cf2 ,\
+            \cf6 width: \cf9 35\cf2 ,\
+            \cf6 decoration: \cf5 BoxDecoration\cf6 (\
+              color: tdRed\cf2 ,\
+              \cf6 borderRadius: \cf5 BorderRadius\cf6 .\cf5 circular\cf6 (\cf9 5\cf6 )\cf2 ,\
+            \cf6 )\cf2 ,\
+            \cf6 child: \cf5 IconButton\cf6 (\
+              color: Colors.
+\f2\i \cf10 white
+\f1\i0 \cf2 ,\
+              \cf6 iconSize: \cf9 18\cf2 ,\
+              \cf6 icon: \cf5 Icon\cf6 (Icons.
+\f2\i \cf10 delete
+\f1\i0 \cf6 )\cf2 ,\
+              \cf6 onPressed: ()\{\
+               \cf7 // print('Click on delete icon');\
+                \cf10 onDeleteItem\cf6 (\cf10 todo\cf6 .\cf10 id\cf6 )\cf2 ;\
+              \cf6 \}\cf2 ,\
+            \cf6 )\cf2 ,\
+          \cf6 )\cf2 ,\
+        \cf6 )\
+    )\cf2 ;\
+  \cf6 \}\
+\}\
+\
+\
+*COLORS DART\
+\
+import \cf4 'package:flutter/material.dart'\cf2 ;\
+\
+const \cf6 Color tdRed = Color(\cf9 0xFFDA4040\cf6 )\cf2 ;\
+const \cf6 Color tdBlue = Color(\cf9 0xFF5F52EE\cf6 )\cf2 ;\
+\
+const \cf6 Color tdBlack = Color(\cf9 0xFF3A3A3A\cf6 )\cf2 ;\
+const \cf6 Color tdGrey =Color(\cf9 0xFF717171\cf6 )\cf2 ;\
+\
+const \cf6 Color tdBGColor =Color(\cf9 0xFFEEEEFF5\cf6 )\cf2 ;\
+}
