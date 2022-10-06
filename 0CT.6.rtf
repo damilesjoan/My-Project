@@ -1,0 +1,310 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;\f1\fmodern\fcharset0 Courier-Oblique;}
+{\colortbl;\red255\green255\blue255;\red191\green100\blue38;\red32\green32\blue32;\red88\green118\blue71;
+\red254\green187\blue91;\red153\green168\blue186;\red173\green169\blue32;\red86\green132\blue173;\red133\green96\blue154;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c74902\c39216\c14902;\csgenericrgb\c12549\c12549\c12549;\csgenericrgb\c34510\c46275\c27843;
+\csgenericrgb\c99608\c73333\c35686;\csgenericrgb\c60000\c65882\c72941;\csgenericrgb\c67843\c66275\c12549;\csgenericrgb\c33725\c51765\c67843;\csgenericrgb\c52157\c37647\c60392;
+}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 import \cf4 'package:flutter/material.dart'\cf2 ;\
+\
+void \cf5 main\cf6 () \{\
+  runApp(\cf5 SchoolManagement\cf6 ())\cf2 ;\
+\cf6 \}\
+\
+\cf2 class \cf6 SchoolManagement \cf2 extends \cf6 StatefulWidget \{\
+  \cf2 const \cf6 SchoolManagement(\{Key? key\}) : \cf2 super\cf6 (key: key)\cf2 ;\
+\
+  \cf7 @override\
+  \cf6 State<SchoolManagement> \cf5 createState\cf6 () => \cf5 _SchoolManagementState\cf6 ()\cf2 ;\
+\cf6 \}\
+\
+\cf2 class \cf6 _SchoolManagementState \cf2 extends \cf6 State<SchoolManagement> \{\
+  \cf7 @override\
+  \cf6 Widget \cf5 build\cf6 (BuildContext context) \{\
+    \cf2 return \cf5 MaterialApp\cf6 (\
+      debugShowCheckedModeBanner: \cf2 false,\
+      \cf6 home: \cf5 Scaffold\cf6 (\
+        body: \cf5 HomePage\cf6 ()\cf2 ,\
+      \cf6 )\cf2 ,\
+    \cf6 )\cf2 ;\
+  \cf6 \}\
+\}\
+\
+\cf2 class \cf6 HomePage \cf2 extends \cf6 StatefulWidget \{\
+  \cf2 const \cf6 HomePage(\{Key? key\}) : \cf2 super\cf6 (key: key)\cf2 ;\
+\
+  \cf7 @override\
+  \cf6 State<HomePage> \cf5 createState\cf6 () => \cf5 _HomePageState\cf6 ()\cf2 ;\
+\cf6 \}\
+\
+\cf2 class \cf6 _HomePageState \cf2 extends \cf6 State<HomePage> \{\
+  \cf7 @override\
+  \cf6 Widget \cf5 build\cf6 (BuildContext context) \{\
+    \cf2 return \cf5 Stack\cf6 (\
+      children: [\
+        \cf5 Container\cf6 (\
+            decoration: \cf5 BoxDecoration\cf6 (\
+              color: \cf5 Color\cf6 (\cf8 0xFFD4E7FE\cf6 )\cf2 ,\
+            \cf6 )\cf2 ,\
+            \cf6 padding: \cf5 EdgeInsets\cf6 .\cf5 symmetric\cf6 (horizontal: \cf8 30\cf2 , \cf6 vertical: \cf8 50\cf6 )\cf2 ,\
+            \cf6 child: \cf5 Column\cf6 (\
+              children: [\
+                \cf5 Container\cf6 (\
+                  alignment: Alignment.
+\f1\i \cf9 centerRight
+\f0\i0 \cf2 ,\
+                  \cf6 child: \cf5 RichText\cf6 (\
+                    text: \cf5 TextSpan\cf6 (\
+                        text: \cf4 "wed"\cf2 ,\
+                        \cf6 style: \cf5 TextStyle\cf6 (\
+                            color: \cf5 Color\cf6 (\cf8 0xFF263064\cf6 )\cf2 ,\
+                            \cf6 fontSize: \cf8 12\cf2 ,\
+                            \cf6 fontWeight: FontWeight.
+\f1\i \cf9 w900
+\f0\i0 \cf6 )\cf2 ,\
+                        \cf6 children: [\
+                          \cf5 TextSpan\cf6 (\
+                            text: \cf4 "05 Oct"\cf2 ,\
+                            \cf6 style: \cf5 TextStyle\cf6 (\
+                                color: \cf5 Color\cf6 (\cf8 0xFF263064\cf6 )\cf2 ,\
+                                \cf6 fontSize: \cf8 12\cf2 ,\
+                                \cf6 fontWeight: FontWeight.
+\f1\i \cf9 normal
+\f0\i0 \cf2 ,\cf6 )\cf2 ,\
+                          \cf6 )\cf2 ,\
+                        \cf6 ])\cf2 ,\
+                       \cf6 )\cf2 ,\
+                     \cf6 )\cf2 ,\
+                     \cf5 SizedBox\cf6 (\
+                       height: \cf8 15\cf2 ,\
+                     \cf6 )\cf2 ,\
+                     \cf5 Row\cf6 (\
+                       crossAxisAlignment: CrossAxisAlignment.\cf9 start\cf2 ,\
+                       \cf6 children: [\
+                         \cf5 Container\cf6 (\
+                           width: \cf8 40\cf2 ,\
+                           \cf6 height: \cf8 40\cf2 ,\
+                           \cf6 decoration: \cf5 BoxDecoration\cf6 (\
+                             borderRadius: \cf5 BorderRadius\cf6 .\cf5 circular\cf6 (\cf8 15\cf6 )\cf2 ,\
+                             \cf6 border: \cf5 Border\cf6 .\cf5 all\cf6 (width: \cf8 1\cf2 , \cf6 color: Colors.
+\f1\i \cf9 white
+\f0\i0 \cf6 )\cf2 ,\
+                             \cf6 boxShadow: [\
+                               \cf5 BoxShadow\cf6 (\
+                                 color: Colors.
+\f1\i \cf9 blueGrey
+\f0\i0 \cf6 .withOpacity(\cf8 0.2\cf6 )\cf2 ,\
+                                 \cf6 blurRadius: \cf8 12\cf2 ,\
+                                 \cf6 spreadRadius: \cf8 8\cf2 ,\
+                               \cf6 )\
+                             ]\cf2 ,\
+                             \cf6 image: \cf5 DecorationImage\cf6 (\
+                               fit: BoxFit.\cf9 cover\cf2 ,\
+                               \cf6 image: \cf5 NetworkImage\cf6 (\
+                                   \cf4 'https://banner2.cleanpng.com/20180423/stq/kisspng-computer-icons-avatar-icon-design-male-teacher-5ade176c2f4525.7023913115245044281936.jpg'\cf6 )\cf2 ,\
+                             \cf6 )\cf2 ,\
+                           \cf6 )\cf2 ,\
+                         \cf6 )\cf2 ,\
+                         \cf5 SizedBox\cf6 (\
+                           width: \cf8 20\
+                         \cf6 )\cf2 ,\
+                         \cf5 Column\cf6 (\
+                           crossAxisAlignment: CrossAxisAlignment.\cf9 start\cf2 ,\
+                           \cf6 children: [\
+                             \cf5 Text\cf6 (\
+                               \cf4 "Hi Anna!"\cf2 ,\
+                               \cf6 style: \cf5 TextStyle\cf6 (\
+                                 fontSize: \cf8 25\cf2 ,\
+                                 \cf6 fontWeight: FontWeight.
+\f1\i \cf9 w900
+\f0\i0 \cf2 ,\
+                                 \cf6 color: \cf5 Color\cf6 (\cf8 0xFF343E87\cf6 )\cf2 ,\
+                               \cf6 )\cf2 ,\
+                             \cf6 )\cf2 ,\
+                             \cf5 SizedBox\cf6 (\
+                               width: \cf8 20\
+                             \cf6 )\cf2 ,\
+                             \cf5 Text\cf6 (\
+                               \cf4 "Here is a list of schedule"\cf2 ,\
+                               \cf6 style: \cf5 TextStyle\cf6 (\
+                                 fontSize: \cf8 13\cf2 ,\
+                                 \cf6 color: Colors.
+\f1\i \cf9 blueGrey
+\f0\i0 \cf2 ,\
+                               \cf6 )\cf2 ,\
+                             \cf6 )\cf2 ,\
+                             \cf5 SizedBox\cf6 (\
+                               height: \cf8 8\cf2 ,\
+                             \cf6 )\cf2 ,\
+                             \cf5 Text\cf6 (\
+                               \cf4 "you need to check..."\cf2 ,\
+                               \cf6 style: \cf5 TextStyle\cf6 (\
+                                 fontSize: \cf8 13\cf2 ,\
+                                 \cf6 color: Colors.
+\f1\i \cf9 blueGrey
+\f0\i0 \cf2 ,\
+                               \cf6 )\cf2 ,\
+                             \cf6 )\cf2 ,\
+                           \cf6 ]\cf2 ,\
+                         \cf6 )\cf2 ,\
+                      \cf6 ]\cf2 ,\
+                     \cf6 )\cf2 ,\
+                   \cf6 ]\cf2 ,\
+                 \cf6 )\cf2 ,\
+              \cf6 )\cf2 ,\
+            \cf5 Positioned\cf6 (\
+              top: \cf8 185\cf2 ,\
+              \cf6 child: \cf5 Container\cf6 (\
+              height: MediaQuery.
+\f1\i \cf5 of
+\f0\i0 \cf6 (context).\cf9 size\cf6 .\cf9 height\cf6 -\cf8 230\cf2 ,\
+              \cf6 width: MediaQuery.
+\f1\i \cf5 of
+\f0\i0 \cf6 (context).\cf9 size\cf6 .\cf9 width\cf2 ,\
+              \cf6 decoration: \cf5 BoxDecoration\cf6 (\
+                color: Colors.
+\f1\i \cf9 white
+\f0\i0 \cf2 ,\
+                \cf6 borderRadius: \cf5 BorderRadius\cf6 .\cf5 circular\cf6 (\cf8 30\cf6 )\cf2 ,\
+              \cf6 )\cf2 ,\
+                \cf6 child: \cf5 Column\cf6 (\
+                  children: [\
+                    \cf5 Row\cf6 (\
+                      children: [\
+                        \cf5 RichText\cf6 (\
+                            text: \cf5 TextSpan\cf6 (text: \cf4 "TODAY CLASSES"\cf2 ,\
+                            \cf6 style: \cf5 TextStyle\cf6 (\
+                              fontSize: \cf8 12\cf2 ,\
+                              \cf6 color: Colors.
+\f1\i \cf9 black
+\f0\i0 \cf2 ,\
+                              \cf6 fontWeight: FontWeight.
+\f1\i \cf9 bold
+\f0\i0 \cf6 )\cf2 ,\
+                              \cf6 children: [\
+                                \cf5 TextSpan\cf6 (text: \cf4 "(3)"\cf2 ,\
+                                \cf6 style: \cf5 TextStyle\cf6 (\
+                                    fontSize: \cf8 12\cf2 ,\
+                                    \cf6 color: Colors.
+\f1\i \cf9 black
+\f0\i0 \cf2 ,\
+                                    \cf6 fontWeight: FontWeight.
+\f1\i \cf9 bold
+\f0\i0 \cf6 )\cf2 ,\
+                                \cf6 )\cf2 ,\
+                              \cf6 ]\
+                            )\cf2 ,\
+                        \cf6 )\cf2 ,\
+                        \cf5 Text\cf6 (\
+                          \cf4 "See all"\cf2 ,\
+                          \cf6 style: \cf5 TextStyle\cf6 (\
+                            fontSize: \cf8 12\cf2 ,\
+                            \cf6 color: \cf5 Color\cf6 (\cf8 0XFF3E3993\cf6 )\cf2 ,\
+                            \cf6 fontWeight: FontWeight.
+\f1\i \cf9 bold\
+                          
+\f0\i0 \cf6 )\cf2 ,\
+                        \cf6 )\cf2 ,\
+                      \cf6 ]\cf2 ,\
+                    \cf6 )\cf2 ,\
+                    \cf5 SizedBox\cf6 (height: \cf8 20\cf6 )\cf2 ,\
+                    \cf5 Container\cf6 (\
+                      padding: \cf5 EdgeInsets\cf6 .\cf5 all\cf6 (\cf8 10\cf6 )\cf2 ,\
+                      \cf6 height: \cf8 100\cf2 ,\
+                      \cf6 decoration: \cf5 BoxDecoration\cf6 (\
+                        color: \cf5 Color\cf6 (\cf8 0xFFF9F9FB\cf6 )\cf2 ,\
+                        \cf6 borderRadius: \cf5 BorderRadius\cf6 .\cf5 circular\cf6 (\cf8 30\cf6 )\cf2 ,\
+                      \cf6 )\cf2 ,\
+                      \cf6 child: \cf5 Row\cf6 (children: [\
+                        \cf5 Column\cf6 (\
+                          mainAxisAlignment: MainAxisAlignment.\cf9 center\cf2 ,\
+                            \cf6 children: [\
+                          \cf5 Text\cf6 (\cf4 "07:00"\cf2 ,\
+                            \cf6 style: \cf5 TextStyle\cf6 (fontWeight: FontWeight.
+\f1\i \cf9 bold
+\f0\i0 \cf6 )\
+                          )\cf2 ,\
+                          \cf5 Text\cf6 (\cf4 "AM"\cf2 ,\
+                              \cf6 style: \cf5 TextStyle\cf6 (\
+                                  fontWeight: FontWeight.
+\f1\i \cf9 bold
+\f0\i0 \cf2 ,\
+                                  \cf6 color: Colors.
+\f1\i \cf9 grey
+\f0\i0 \cf6 )\
+                          )\cf2 ,\
+                        \cf6 ]\
+                        )\cf2 ,\
+                        \cf5 Container\cf6 (\
+                          height: \cf8 100\cf2 ,\
+                          \cf6 width: \cf8 1\cf2 ,\
+                          \cf6 color: Colors.
+\f1\i \cf9 grey
+\f0\i0 \cf6 .withOpacity(\cf8 0.5\cf6 )\cf2 ,\
+                        \cf6 )\cf2 ,\
+                        \cf5 Column\cf6 (\
+                          crossAxisAlignment: CrossAxisAlignment.\cf9 start\cf2 ,\
+                          \cf6 mainAxisAlignment: MainAxisAlignment.\cf9 spaceEvenly\cf2 ,\
+                          \cf6 children: [\
+                            \cf5 Text\cf6 (\cf4 "Intermidiate Accounting 3"\
+                            \cf6 )\cf2 ,\
+                            \cf5 Row\cf6 (children: [\
+                              \cf5 Icon\cf6 (\
+                                Icons.
+\f1\i \cf9 location_on
+\f0\i0 \cf2 ,\
+                                \cf6 color: Colors.
+\f1\i \cf9 grey
+\f0\i0 \cf2 ,\
+                                \cf6 size: \cf8 20\cf2 ,\
+                              \cf6 )\cf2 ,\
+                              \cf5 SizedBox\cf6 (\
+                                width: \cf8 5\cf2 ,\
+                              \cf6 )\cf2 ,\
+                              \cf5 Text\cf6 (\
+                                \cf4 "Room 12, E Building"\cf2 ,\
+                                \cf6 style:\
+                                \cf5 TextStyle\cf6 (color: Colors.
+\f1\i \cf9 grey
+\f0\i0 \cf2 , \cf6 fontSize: \cf8 13\cf6 )\cf2 ,\
+                              \cf6 )\cf2 ,\
+                            \cf6 ]\cf2 ,\
+                            \cf6 )\cf2 ,\
+                            \cf5 Row\cf6 (children: [\
+                              \cf5 CircleAvatar\cf6 (\
+                                backgroundImage: \cf5 NetworkImage\cf6 (\
+                                    \cf4 "https://as1.ftcdn.net/v2/jpg/01/16/24/44/1000_F_116244459_pywR1e0T3H7FPk3LTMjG6jsL3UchDpht.jpg"\cf6 )\cf2 ,\
+                                \cf6 radius: \cf8 10\cf2 ,\
+                              \cf6 )\cf2 ,\
+                              \cf5 SizedBox\cf6 (\
+                                width: \cf8 5\cf2 ,\
+                              \cf6 )\cf2 ,\
+                              \cf5 Text\cf6 (\
+                                \cf4 "Room 12, E Building"\cf2 ,\
+                                \cf6 style:\
+                                \cf5 TextStyle\cf6 (color: Colors.
+\f1\i \cf9 grey
+\f0\i0 \cf2 , \cf6 fontSize: \cf8 13\cf6 )\cf2 ,\
+                              \cf6 )\cf2 ,\
+                            \cf6 ]\cf2 ,\
+                            \cf6 )\cf2 ,\
+                          \cf6 ]\cf2 ,\
+                        \cf6 )\cf2 ,\
+                      \cf6 ]\
+                      )\cf2 ,\
+                    \cf6 )\cf2 ,\
+                  \cf6 ]\cf2 ,\
+                \cf6 )\cf2 ,\
+            \cf6 )\cf2 ,\
+           \cf6 )\cf2 ,\
+          \cf6 ]\cf2 ,\
+        \cf6 )\cf2 ;\
+  \cf6 \}\
+\}\
+\
+\
+}
